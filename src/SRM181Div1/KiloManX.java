@@ -25,7 +25,10 @@ public class KiloManX {
 		for (int i = 1; i < num; ++i) {
 			int[] damage = getDamage(damageChart[i - 1]);
 			for (int j = 0; j < num - 1; ++j) {
-				result[i][j] = bossHealth[j] / damage[j];
+				if (damage[j] == 0)
+					result[i][j] = Integer.MAX_VALUE;
+				else
+					result[i][j] = bossHealth[j] / damage[j];
 			}
 		}
 		return result;
